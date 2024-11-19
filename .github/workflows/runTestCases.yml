@@ -1,0 +1,26 @@
+name: Run test cases without reports
+
+on: 
+    pull_request:
+        branches: 'masterW'
+    push:
+        branches: 'master'
+
+jobs:
+    runTcs:
+        runs-on: ubuntu-22.04
+    
+        steps:
+            - name: Get repo
+              id: 'A1'
+              uses: actions/checkout@v4
+
+            - name: Setup node
+              id: 'A2'
+              uses: actions/setup-node@v4
+              with:
+                node-version: '18.X'
+
+            - name: Run test cases on chrome report
+              id: 'A3'
+              run: npm run test
